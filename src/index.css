@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: #0B0C10;
+  --surface: #111216;
+  --neon: #00E5FF;
+  --text: #BFC5C9;
+}
+
+html,body,#root{height:100%}
+body{
+  @apply bg-dark text-grayText font-inter;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* neon glow */
+.neon {
+  text-shadow: 0 0 6px rgba(0,229,255,0.12), 0 0 18px rgba(0,229,255,0.06);
+  color: #fff;
+}
+
+.bg-neon {
+  background: linear-gradient(90deg, rgba(0,229,255,0.06), rgba(0,229,255,0.02));
+}
+
+.btn-neon{
+  background: linear-gradient(180deg, var(--neon), #00c7e6);
+  color: #000;
+  box-shadow: 0 10px 30px rgba(0,229,255,0.08), 0 0 18px rgba(0,229,255,0.06);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-neon:hover{
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 50px rgba(0,229,255,0.14), 0 0 26px rgba(0,229,255,0.12);
+}
+
+/* particle container size */
+#tsparticles{position:absolute; inset:0; z-index:0;}
+
+/* cards */
+.card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); }
+
+/* animated underline */
+.nav-underline { position:relative; }
+.nav-underline::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--neon); transition:width .22s ease; }
+.nav-underline:hover::after{ width:100%; }
+
+/* fade helpers */
+.fade-in{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; }
+.fade-in.show{ opacity:1; transform:translateY(0); }
+
+/* responsive tweaks */
+@media (max-width:768px){
+  .desktop-hide{ display:none; }
+}
